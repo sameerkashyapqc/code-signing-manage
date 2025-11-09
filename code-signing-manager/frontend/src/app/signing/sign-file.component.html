@@ -1,0 +1,30 @@
+<h2>Signed Files</h2>
+
+<p *ngIf="loading">Loading…</p>
+<p *ngIf="err">{{ err }}</p>
+
+<table *ngIf="!loading && list.length" border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>Certificate</th>
+      <th>Status</th>
+      <th>Signed At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of list">
+      <td>{{ s.fileName }}</td>
+      <td>{{ s.certificateName }}</td>
+      <td>{{ s.status }}</td>
+      <td>{{ s.signedAt }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!loading && !list.length">No signed files yet.</p>
+
+<nav>
+  <a routerLink="/sign">Sign Another</a> |
+  <a routerLink="/certificates">Certificates</a>
+</nav>

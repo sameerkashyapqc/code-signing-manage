@@ -1,0 +1,39 @@
+<h2>Create Certificate</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Name
+    <input formControlName="certificateName" placeholder="BuildCert-01" />
+  </label>
+  <br />
+
+  <label>
+    Issuer
+    <input formControlName="issuerName" placeholder="QCecuring" />
+  </label>
+  <br />
+
+  <label>
+    Valid From
+    <input type="date" formControlName="validFrom" />
+  </label>
+  <br />
+
+  <label>
+    Valid To
+    <input type="date" formControlName="validTo" />
+  </label>
+  <br />
+
+  <button type="submit" [disabled]="form.invalid || loading">
+    {{ loading ? 'Creating…' : 'Create' }}
+  </button>
+</form>
+
+<p>{{ msg }}</p>
+
+<nav>
+  <a routerLink="/certificates">View Certificates</a> |
+  <a routerLink="/sign">Sign a File</a> |
+  <a routerLink="/signed">Signed Files</a>
+</nav>

@@ -1,0 +1,33 @@
+<h2>Certificates</h2>
+
+<p *ngIf="loading">Loading…</p>
+<p *ngIf="err">{{ err }}</p>
+
+<table *ngIf="!loading && list.length" border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Issuer</th>
+      <th>Valid From</th>
+      <th>Valid To</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of list">
+      <td>{{ c.certificateName }}</td>
+      <td>{{ c.issuerName }}</td>
+      <td>{{ c.validFrom }}</td>
+      <td>{{ c.validTo }}</td>
+      <td>{{ c.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!loading && !list.length">No certificates yet.</p>
+
+<nav>
+  <a routerLink="/certificates/new">Create Certificate</a> |
+  <a routerLink="/sign">Sign a File</a> |
+  <a routerLink="/signed">Signed Files</a>
+</nav>

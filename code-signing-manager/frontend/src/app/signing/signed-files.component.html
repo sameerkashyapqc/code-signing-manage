@@ -1,0 +1,32 @@
+<h2>Sign a File</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    File Name
+    <input formControlName="fileName" placeholder="release-notes.pdf" />
+  </label>
+  <br />
+
+  <label>
+    Certificate
+    <select formControlName="certificateId">
+      <option value="" disabled>Select</option>
+      <option *ngFor="let c of certs" [value]="c.id">
+        {{ c.certificateName }} ({{ c.status }})
+      </option>
+    </select>
+  </label>
+  <br />
+
+  <button type="submit" [disabled]="form.invalid || loading">
+    {{ loading ? 'Signing…' : 'Sign' }}
+  </button>
+</form>
+
+<p>{{ msg }}</p>
+
+<nav>
+  <a routerLink="/certificates">Certificates</a> |
+  <a routerLink="/signed">Signed Files</a>
+</nav>
+
